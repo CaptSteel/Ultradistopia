@@ -1,0 +1,151 @@
+{
+  "main": {
+    "id": "64f3914779ab19c2",
+    "type": "split",
+    "children": [
+      {
+        "id": "6c940ec2a5421407",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d48179360086b1c2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "MATLAB GUI.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "5cad42751e2fe7d3",
+    "type": "split",
+    "children": [
+      {
+        "id": "c5be6c2ef939c3a5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ef124f94860df3db",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "4b9e49aeec5a790c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "2bc739e5157a6e10",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "b000d3cbfef1d5a3",
+    "type": "split",
+    "children": [
+      {
+        "id": "a3a2ffd8fb9db4a3",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9616c6377d1ef3dc",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "MATLAB GUI.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "d226da8b7192eb80",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "MATLAB GUI.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "e476e735e5a52cd8",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "b3cd5c9d9db5b1d9",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "MATLAB GUI.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "ribbon": {
+    "mostRecentAction": ""
+  },
+  "active": "d48179360086b1c2",
+  "lastOpenFiles": [
+    "Project working.md",
+    "Ultradistopia.md",
+    "Sensor and GUI.md",
+    "MATLAB GUI.md",
+    "Images/circuit.png",
+    "Arduino code.md"
+  ]
+}

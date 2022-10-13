@@ -26,7 +26,7 @@ function varargout = DistanceMeasurement(varargin)
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
-gui_State = struct('gui_Name',       mfilename, ...
+gui_State = struct('gui_Name',       'ParkingSensor', ...
                    'gui_Singleton',  gui_Singleton, ...
                    'gui_OpeningFcn', @DistanceMeasurement_OpeningFcn, ...
                    'gui_OutputFcn',  @DistanceMeasurement_OutputFcn, ...
@@ -52,9 +52,9 @@ function DistanceMeasurement_OpeningFcn(hObject, eventdata, handles, varargin)
 % handles    structure with handles and user data (see GUIDATA)
 % varargin   command line arguments to DistanceMeasurement (see VARARGIN)
 
-global temp;
-global i;
-i = 0;
+%global temp;
+%global i;
+%i = 0;
 % Choose default command line output for DistanceMeasurement
 handles.output = hObject;
 % Delete any opened ports in MATLAB
@@ -88,6 +88,16 @@ function SerialEvent(sObject, eventdata, hGui)
 handles = guidata(hGui);
 % get data from serial port
 tmp_c = fscanf(sObject);
+temp = str2num(tmp_c);
+if temp < 7
+    set(handles.alertsText, 'String', 'Danger', 'ForegroundColor', 'r')
+end
+if temp > 7 && temp < 15
+    set(handles.alertsText, 'String', 'Warning!', 'ForegroundColor', 'y')
+end
+if temp > 15
+    set(handles.alertsText, 'String', 'Safe', 'ForegroundColor', 'g')
+end
 set(handles.textDistance, 'String', tmp_c)
 
 % Trying out the plot and logging system
