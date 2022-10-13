@@ -89,9 +89,16 @@ handles = guidata(hGui);
 % get data from serial port
 tmp_c = fscanf(sObject);
 set(handles.textDistance, 'String', tmp_c)
-pp = str2num(tmp_c);
-temp(i) = pp;
-i=i+1;
+
+% Trying out the plot and logging system
+%pp = str2num(tmp_c);
+%temp(i) = pp;
+%i=i+1;
+%x = 1:5;
+%y = 6:10;
+%plot(x,y)
+% plot and logging system ends here
+
 % Updates handle structure
 guidata(hGui, handles)
 
@@ -101,8 +108,8 @@ function figure1_CloseRequestFcn(hObject, eventdata, handles)
 % hObject    handle to figure1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-plot(temp)
 fclose(handles.ser);
 delete(handles.ser);
+
 % Hint: delete(hObject) closes the figure
 delete(hObject);
