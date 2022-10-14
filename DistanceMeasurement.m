@@ -84,22 +84,33 @@ handles = guidata(hGui);
 tmp_c = fscanf(sObject);
 % convert string data to scalar numerical data
 temp = str2num(tmp_c);
+% code for ParkingSensor
 if sFlag == 1
     % conditions for diplaying output and messages
+    if temp == 0
+        set(handles.alertsText, 'String', 'IMPACT!!', 'ForegroundColor', 'r')
+        set(handles.textDistance, 'visible', 'on')
+        set(handles.text4, 'visible', 'on')
+    end
     if temp < 7
         set(handles.alertsText, 'String', 'Danger! Too close!', 'ForegroundColor', 'r')
+        set(handles.textDistance, 'visible', 'on')
+        set(handles.text4, 'visible', 'on')
     end
     if temp > 7 && temp < 15
         set(handles.alertsText, 'String', 'Warning!', 'ForegroundColor', [0.93 0.69 0.13])
+        set(handles.textDistance, 'visible', 'on')
+        set(handles.text4, 'visible', 'on')
     end
     if temp > 15 && temp < 50
         set(handles.alertsText, 'String', 'Safe', 'ForegroundColor', [0.39 0.83 0.07])
+        set(handles.textDistance, 'visible', 'on')
+        set(handles.text4, 'visible', 'on')
     end
     if temp > 50
         set(handles.alertsText, 'String', 'Safe. No objects nearby', 'ForegroundColor', [0.39 0.83 0.07])
-    end
-    if temp == 0
-        set(handles.alertsText, 'String', 'IMPACT!!', 'ForegroundColor', 'r')
+        set(handles.textDistance, 'visible', 'off')
+        set(handles.text4, 'visible', 'off')
     end
 end
 % display distance output value

@@ -14,11 +14,14 @@ function varargout = DistanceMeasurement(varargin)
 %      unrecognized property name or invalid value makes property application
 %      stop.  All inputs are passed to DistanceMeasurement_OpeningFcn via varargin.
 
-examples = ['ParkingSensor', 'MuseumArtifactSensor']
+example1 = 'ParkingSensor'; 
+example2 = 'MuseumArtifactSensor';
+global sFlag;
+sFlag = 1;
 
 % Begin initialization code
 gui_Singleton = 1;
-gui_State = struct('gui_Name',       'ParkingSensor', ...
+gui_State = struct('gui_Name',       example1, ...
                    'gui_Singleton',  gui_Singleton, ...
                    'gui_OpeningFcn', @DistanceMeasurement_OpeningFcn, ...
                    'gui_OutputFcn',  @DistanceMeasurement_OutputFcn, ...
@@ -73,6 +76,7 @@ function varargout = DistanceMeasurement_OutputFcn(hObject, eventdata, handles)
 varargout{1} = handles.output;
 
 function SerialEvent(sObject, eventdata, hGui)
+global sFlag;
 % get the updated handle
 handles = guidata(hGui);
 
@@ -80,21 +84,24 @@ handles = guidata(hGui);
 tmp_c = fscanf(sObject);
 % convert string data to scalar numerical data
 temp = str2num(tmp_c);
-% conditions for diplaying output and messages
-if temp < 7
-    set(handles.alertsText, 'String', 'Danger! Too close!', 'ForegroundColor', 'r')
-end
-if temp > 7 && temp < 15
-    set(handles.alertsText, 'String', 'Warning!', 'ForegroundColor', [0.93 0.69 0.13])
-end
-if temp > 15 && temp < 50
-    set(handles.alertsText, 'String', 'Safe', 'ForegroundColor', [0.39 0.83 0.07])
-end
-if temp > 50
-    set(handles.alertsText, 'String', 'Safe. No objects nearby', 'ForegroundColor', [0.39 0.83 0.07])
-end
-if temp == 0
-    set(handles.alertsText, 'String', 'IMPACT!!', 'ForegroundColor', 'r')
+% code for ParkingSensor
+if sFlag == 1
+    % conditions for diplaying output and messages
+    if temp < 7
+        set(handles.alertsText, 'String', 'Danger! Too close!', 'ForegroundColor', 'r')
+    end
+    if temp > 7 && temp < 15
+        set(handles.alertsText, 'String', 'Warning!', 'ForegroundColor', [0.93 0.69 0.13])
+    end
+    if temp > 15 && temp < 50
+        set(handles.alertsText, 'String', 'Safe', 'ForegroundColor', [0.39 0.83 0.07])
+    end
+    if temp > 50
+        set(handles.alertsText, 'String', 'Safe. No objects nearby', 'ForegroundColor', [0.39 0.83 0.07])
+    end
+    if temp == 0
+        set(handles.alertsText, 'String', 'IMPACT!!', 'ForegroundColor', 'r')
+    end
 end
 % display distance output value
 set(handles.textDistance, 'String', tmp_c)
