@@ -4,4 +4,7 @@ Back to [[Ultradistopia]]
 # MATLAB GUI
 ---
 **Files:**
-- [[DistanceMeasurement.fig]]
+- Base figure file [[DistanceMeasure.fig]]
+- [[ParkingSensor.fig]]
+- [[MuseumArtifactSensor.fig]]
+

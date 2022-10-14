@@ -11,12 +11,8 @@
             "id": "d48179360086b1c2",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "MATLAB GUI.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "graph",
+              "state": {}
             }
           }
         ]
@@ -85,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "MATLAB GUI.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "MATLAB GUI.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -124,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "MATLAB GUI.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -143,8 +135,8 @@
   "lastOpenFiles": [
     "Project working.md",
     "Ultradistopia.md",
-    "Sensor and GUI.md",
     "MATLAB GUI.md",
+    "Sensor and GUI.md",
     "Images/circuit.png",
     "Arduino code.md"
   ]

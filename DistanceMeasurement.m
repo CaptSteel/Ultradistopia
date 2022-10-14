@@ -1,27 +1,27 @@
 function varargout = DistanceMeasurement(varargin)
-%      DISTANCEMEASUREMENT, by itself, creates a new DISTANCEMEASUREMENT or raises the existing
-%      singleton*.
+%      DistanceMeasurement, by itself, creates a new DistanceMeasurement or raises the existing
+%      singleton.
 %
-%      H = DISTANCEMEASUREMENT returns the handle to a new DISTANCEMEASUREMENT or the handle to
-%      the existing singleton*.
+%      H = DistanceMeasurement returns the handle to a new DistanceMeasurement or the handle to
+%      the existing singleton.
 %
-%      DISTANCEMEASUREMENT('CALLBACK',hObject,eventData,handles,...) calls the local
-%      function named CALLBACK in DISTANCEMEASUREMENT.M with the given input arguments.
+%      DistanceMeasurement('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in DistanceMeasurement with the given input arguments.
 %
-%      DISTANCEMEASUREMENT('Property','Value',...) creates a new DISTANCEMEASUREMENT or raises the
-%      existing singleton*.  Starting from the left, property value pairs are
+%      DistanceMeasurement('Property','Value',...) creates a new DistanceMeasurement or raises the
+%      existing singleton.  Starting from the left, property value pairs are
 %      applied to the GUI before DistanceMeasurement_OpeningFcn gets called.  An
 %      unrecognized property name or invalid value makes property application
 %      stop.  All inputs are passed to DistanceMeasurement_OpeningFcn via varargin.
 
-example1 = 'ParkingSensor'; 
-example2 = 'MuseumArtifactSensor';
+example1 = 'ParkingSensor';
+example2 = 'DistanceDelta';
 global sFlag;
-sFlag = 1;
+sFlag = 2;
 
 % Begin initialization code
 gui_Singleton = 1;
-gui_State = struct('gui_Name',       example1, ...
+gui_State = struct('gui_Name',       example2, ...
                    'gui_Singleton',  gui_Singleton, ...
                    'gui_OpeningFcn', @DistanceMeasurement_OpeningFcn, ...
                    'gui_OutputFcn',  @DistanceMeasurement_OutputFcn, ...
@@ -53,10 +53,11 @@ function DistanceMeasurement_OpeningFcn(hObject, eventdata, handles, varargin)
 % Choosing default command line output for figure
 handles.output = hObject;
 % Delete any opened ports in MATLAB
-delete(instrfind)
+delete(instrfind({'Port'},{'COM7'}));
+% delete(instrfind)
 % Create a Serial Object
 % Update: Registering new error on Ardunio IDE, check pins before launch
-handles.ser = serial('COM7','BaudRate',115200,'Terminator','LF','Timeout',10);
+handles.ser = serial('COM7' ,'BaudRate',115200,'Terminator','LF','Timeout',10);
 % Associate Serial Event, whenever Terminal Character is recived
 handles.ser.BytesAvailableFcn = {@SerialEvent, hObject};
 % Open Serial Port
@@ -86,14 +87,14 @@ tmp_c = fscanf(sObject);
 temp = str2num(tmp_c);
 % code for ParkingSensor
 if sFlag == 1
-    % conditions for diplaying output and messages
+    % conditions for diplaying output on varing distances
     if temp == 0
         set(handles.alertsText, 'String', 'IMPACT!!', 'ForegroundColor', 'r')
         set(handles.textDistance, 'visible', 'on')
         set(handles.text4, 'visible', 'on')
     end
-    if temp < 7
-        set(handles.alertsText, 'String', 'Danger! Too close!', 'ForegroundColor', 'r')
+    if temp > 0 && temp < 7
+        set(handles.alertsText, 'String', 'Danger! Too close!', 'ForegroundColor', [1.00 0.41 0.16])
         set(handles.textDistance, 'visible', 'on')
         set(handles.text4, 'visible', 'on')
     end
@@ -112,9 +113,33 @@ if sFlag == 1
         set(handles.textDistance, 'visible', 'off')
         set(handles.text4, 'visible', 'off')
     end
+    % display distance output value
+    set(handles.textDistance, 'String', tmp_c)
 end
-% display distance output value
-set(handles.textDistance, 'String', tmp_c)
+if sFlag == 2
+   if temp == 5
+       set(handles.alertsText, 'String', 'Secure', 'ForegroundColor', [0.39 0.83 0.07])
+       % display distance output value
+       set(handles.textDistance, 'String', tmp_c)
+       set(handles.descP, 'visible', 'off')
+   end
+   if temp ~= 5
+      set(handles.alertsText, 'String', 'Warning!', 'ForegroundColor', 'r')
+      % display required distance output value
+      set(handles.textDistance, 'String', (temp-5))
+      if (temp-5) > 0
+         set(handles.descP, 'String', 'Object far away') 
+         set(handles.descP, 'visible', 'on')
+      elseif (temp-5) < 0
+         set(handles.descP, 'String', 'Object misaligned')
+         set(handles.descP, 'visible', 'on')
+      else
+          set(handles.descP, 'String', 'Unknown Error')
+          set(handles.descP, 'visible', 'on')
+      end 
+   end
+end
+
 
 % FUTURE WORK
 % Trying out the plot and logging system
@@ -133,11 +158,7 @@ guidata(hGui, handles)
 
 % --- Executes on closing figure window
 function figure1_CloseRequestFcn(hObject, eventdata, handles)
-% hObject    handle to figure
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data
 fclose(handles.ser);
 delete(handles.ser);
-
 % delete object when window is closed
 delete(hObject);
