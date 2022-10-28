@@ -4,15 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "6c940ec2a5421407",
+        "id": "a6772472db2fc8fd",
         "type": "tabs",
         "children": [
           {
-            "id": "d48179360086b1c2",
+            "id": "1c51abdd123c1eef",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Ultradistopia.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Ultradistopia.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Ultradistopia.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Ultradistopia.md"
+              }
             }
           }
         ]
@@ -131,8 +139,9 @@
   "ribbon": {
     "mostRecentAction": ""
   },
-  "active": "d48179360086b1c2",
+  "active": "1c51abdd123c1eef",
   "lastOpenFiles": [
+    "2022-10-15.md",
     "Project working.md",
     "Ultradistopia.md",
     "MATLAB GUI.md",
